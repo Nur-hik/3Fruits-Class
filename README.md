@@ -51,8 +51,10 @@ Sistem bertindak sebagai "Smart Quality Control" sederhana:
 Pastikan Python sudah terinstal di komputer Anda, lalu buat *virtual environment* dan instal semua dependensinya:
 ```bash
 python -m venv .venv
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 # Aktivasi di Windows:
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 # Aktivasi di Mac/Linux:
 source .venv/bin/activate
 
