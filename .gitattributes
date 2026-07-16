@@ -19,3 +19,6 @@
 *.h5 filter=lfs diff=lfs merge=lfs -text
 *.tflite filter=lfs diff=lfs merge=lfs -text
 *.pb filter=lfs diff=lfs merge=lfs -text
+
+# Binary deliverables
+*.pdf -text

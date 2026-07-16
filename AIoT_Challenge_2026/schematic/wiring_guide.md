@@ -2,6 +2,8 @@
 
 Misi 1 adalah "Engineer Never Skip Wiring". Berikut adalah panduan merakit NodeMCU (ESP8266) dengan Modul Relay 4 Channel dan Lampu LED Indikator.
 
+File deliverable siap cetak tersedia pada [`wiring_diagram.pdf`](wiring_diagram.pdf); sumber diagram yang dapat diedit tersedia sebagai [`wiring_diagram.svg`](wiring_diagram.svg).
+
 ## Komponen yang Dibutuhkan
 1. 1x NodeMCU ESP8266
 2. 1x Modul Relay 4-Channel (5V)
@@ -20,8 +22,10 @@ Misi 1 adalah "Engineer Never Skip Wiring". Berikut adalah panduan merakit NodeM
 | **GND** | **GND** | Ground bersama |
 | **D1** (GPIO 5) | **IN1** | Sinyal Relay 1 (Fresh Apples) |
 | **D2** (GPIO 4) | **IN2** | Sinyal Relay 2 (Fresh Lemons) |
-| **D3** (GPIO 0) | **IN3** | Sinyal Relay 3 (Fresh Oranges) |
-| **D4** (GPIO 2) | **IN4** | Sinyal Relay 4 (Rotten Fruits) |
+| **D5** (GPIO 14) | **IN3** | Sinyal Relay 3 (Fresh Oranges) |
+| **D6** (GPIO 12) | **IN4** | Sinyal Relay 4 (Rotten Fruits) |
+
+> Gunakan D5 dan D6, bukan D3/GPIO0 dan D4/GPIO2, untuk dua channel terakhir. GPIO0 dan GPIO2 adalah *boot-strapping pins* ESP8266; level yang salah dari relay ketika boot dapat membuat NodeMCU gagal menyala.
 
 > **⚠️ Peringatan:** Pastikan jumper JD-VCC ke VCC terpasang pada modul relay jika menggunakan power yang sama, atau gunakan sumber tegangan eksternal (5V) terpisah pada JD-VCC jika relay bergetar karena kurang daya dari USB.
 
@@ -59,8 +63,8 @@ graph TD
         
         MCU -->|Pin D1| IN1[Relay IN1]
         MCU -->|Pin D2| IN2[Relay IN2]
-        MCU -->|Pin D3| IN3[Relay IN3]
-        MCU -->|Pin D4| IN4[Relay IN4]
+        MCU -->|Pin D5| IN3[Relay IN3]
+        MCU -->|Pin D6| IN4[Relay IN4]
         
         subgraph ModulRelay [Modul Relay 4-Channel]
             IN1 -.-> R1((Switch R1))
