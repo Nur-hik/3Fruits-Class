@@ -1,0 +1,25 @@
+{
+  "best_model": "MobileNetV2 Transfer Learning + Fine-Tuning",
+  "image_size": [
+    224,
+    224
+  ],
+  "num_classes": 6,
+  "class_names": [
+    "freshapples",
+    "freshlemons",
+    "freshoranges",
+    "rottenapples",
+    "rottenlemons",
+    "rottenoranges"
+  ],
+  "metrics": {
+    "train_loss": 0.004145814571529627,
+    "train_accuracy": 0.9988569021224976,
+    "val_loss": 0.01019154954701662,
+    "val_accuracy": 0.9963403344154358,
+    "test_loss": 0.02590041048824787,
+    "test_accuracy": 0.9926874041557312,
+    "fit_status": "GOOD FIT"
+  }
+}

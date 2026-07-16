@@ -1,0 +1,10 @@
+filepath,label_asli,hasil_prediksi,probabilitas,benar
+/content/DATA_SET_A_O_L-1/train/rottenapples/saltandpepper_Screen-Shot-2018-06-08-at-2-26-14-PM_png.rf.24edd03d12cef8e8d36c2fddb2d25fca.jpg,rottenapples,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenlemons/bad_quality_238_jpg.rf.d2a4e9f024b46512f1c2e9023bb99eb2.jpg,rottenlemons,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/freshoranges/rotated_by_60_Screen-Shot-2018-06-13-at-12-08-54-AM_png.rf.088a69463118ead90ea293d656dc20e0.jpg,freshoranges,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenapples/rotated_by_75_Screen-Shot-2018-06-08-at-2-52-20-PM_png.rf.287562530f8992da3e08e4f72eeb918f.jpg,rottenapples,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenapples/rotated_by_15_Screen-Shot-2018-06-08-at-2-47-54-PM_png.rf.30a5bfb17fe04c973a1b484d569e750e.jpg,rottenapples,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenoranges/rotated_by_60_Screen-Shot-2018-06-12-at-11-24-37-PM_png.rf.99e64771439dea5409cf972a813b9ec7.jpg,rottenoranges,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenoranges/saltandpepper_Screen-Shot-2018-06-12-at-11-29-10-PM_png.rf.c4d86d161257b7b18a6c7fc7b4efb73f.jpg,rottenoranges,freshapples,,False
+/content/DATA_SET_A_O_L-1/test/rottenoranges/rotated_by_30_Screen-Shot-2018-06-12-at-11-33-12-PM_png.rf.2c45f21830d9af79c167a937e753e20d.jpg,rottenoranges,freshapples,,False
+/content/DATA_SET_A_O_L-1/train/rottenapples/rotated_by_45_Screen-Shot-2018-06-07-at-2-17-25-PM_png.rf.4f67b6284912a179d134cb13dd56087e.jpg,rottenapples,freshapples,,False

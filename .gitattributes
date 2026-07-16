@@ -1,0 +1,21 @@
+# Set default behavior for all files
+* text=auto
+
+# Python code
+*.py text eol=lf
+
+# Arduino code
+*.ino text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Machine Learning Models (Git LFS)
+# Sangat disarankan jika file keras / tflite berukuran besar
+*.keras filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.tflite filter=lfs diff=lfs merge=lfs -text
+*.pb filter=lfs diff=lfs merge=lfs -text
