@@ -1,42 +1,34 @@
-# settings.py
-# File konfigurasi terpusat untuk proyek AIoT Challenge 2026
+"""Konfigurasi default untuk demonstrasi kontrol relay berbasis serial."""
 
-# ==========================================
-# KONFIGURASI KECERDASAN BUATAN (AI MODEL)
-# ==========================================
-# Lokasi model Keras (menggunakan relative path dari folder python)
-MODEL_PATH = "../../models/mobilenetv2_finetuned_best.keras"
+from pathlib import Path
 
-# Lokasi daftar nama kelas (JSON)
-CLASS_NAMES_PATH = "../../exports/class_names.json"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-# Ambang batas keyakinan (Confidence). 
-# Model hanya akan mengirim perintah ke alat jika prediksi lebih besar dari persentase ini.
+# Model deployment ini sudah menyertakan preprocessing MobileNetV2 (nilai piksel
+# RGB 0--255 -> -1--1). Jangan membagi nilai piksel dengan 255 lagi di aplikasi.
+MODEL_PATH = PROJECT_ROOT / "exports" / "data_inference_model.h5"
+CLASS_NAMES_PATH = PROJECT_ROOT / "exports" / "class_names.json"
+IMAGE_SIZE = (224, 224)
 CONFIDENCE_THRESHOLD = 0.60
 
-# Ukuran input gambar yang dibutuhkan model (Standar MobileNetV2 adalah 224x224)
-IMAGE_SIZE = (224, 224)
+# Perintah satu-karakter yang dipahami sketch NodeMCU.
+COMMAND_BY_CLASS = {
+    "freshapples": "1",
+    "freshlemons": "2",
+    "freshoranges": "3",
+    "rottenapples": "4",
+    "rottenlemons": "4",
+    "rottenoranges": "4",
+}
+OFF_COMMAND = "0"
 
-
-# ==========================================
-# KONFIGURASI HARDWARE (SERIAL & IOT)
-# ==========================================
-# UBAH tulisan "COM3" di bawah ini dengan port NodeMCU Anda.
-# Cara cek: Buka Arduino IDE -> klik menu "Tools" -> lihat bagian "Port".
-# Contoh Windows: "COM3", "COM5"
-# Contoh Mac/Linux: "/dev/ttyUSB0" atau "/dev/cu.SLAB_USBtoUART"
-SERIAL_PORT = "COM3" 
-
-# Kecepatan komunikasi serial (Baudrate). Harus SAMA dengan yang ada di aiot_nodemcu.ino.
+SERIAL_PORT = "COM3"  # Ganti, atau gunakan opsi CLI --port.
 BAUD_RATE = 115200
+SERIAL_STARTUP_DELAY_SECONDS = 2.0
 
-
-# ==========================================
-# KONFIGURASI KAMERA
-# ==========================================
-# ID Kamera (0 biasanya untuk webcam bawaan laptop, 1 untuk webcam eksternal)
 CAMERA_ID = 0
-
-# Resolusi video. Diturunkan menjadi 640x480 agar FPS (Frame Per Second) stabil.
 CAMERA_WIDTH = 640
 CAMERA_HEIGHT = 480
+
+# Sebuah prediksi harus konsisten pada beberapa frame sebelum relay berubah.
+MIN_STABLE_FRAMES = 3

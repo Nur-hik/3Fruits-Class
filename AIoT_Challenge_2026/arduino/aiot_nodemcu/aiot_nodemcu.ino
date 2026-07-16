@@ -14,10 +14,14 @@
  */
 
 // Mendefinisikan pin Relay pada NodeMCU (ESP8266)
-#define RELAY1 D1 // Pin GPIO 5
-#define RELAY2 D2 // Pin GPIO 4
-#define RELAY3 D3 // Pin GPIO 0
-#define RELAY4 D4 // Pin GPIO 2
+#define RELAY1 D1 // GPIO 5
+#define RELAY2 D2 // GPIO 4
+#define RELAY3 D5 // GPIO 14
+#define RELAY4 D6 // GPIO 12
+
+// Ubah dua nilai ini jika modul relay Anda active-HIGH.
+const uint8_t RELAY_ON = LOW;
+const uint8_t RELAY_OFF = HIGH;
 
 void setup() {
   // Inisialisasi komunikasi serial pada baudrate 115200
@@ -53,27 +57,27 @@ void loop() {
     switch (command) {
       case '1':
         turnOffAllRelays(); // Matikan relay lain (debounce prevention)
-        digitalWrite(RELAY1, LOW); // Relay 1 Aktif
-        // Serial.println("Aksi: Relay 1 ON - Fresh Apples");
+        digitalWrite(RELAY1, RELAY_ON);
+        Serial.println("ACK:1 Fresh Apples");
         break;
       case '2':
         turnOffAllRelays();
-        digitalWrite(RELAY2, LOW); // Relay 2 Aktif
-        // Serial.println("Aksi: Relay 2 ON - Fresh Lemons");
+        digitalWrite(RELAY2, RELAY_ON);
+        Serial.println("ACK:2 Fresh Lemons");
         break;
       case '3':
         turnOffAllRelays();
-        digitalWrite(RELAY3, LOW); // Relay 3 Aktif
-        // Serial.println("Aksi: Relay 3 ON - Fresh Oranges");
+        digitalWrite(RELAY3, RELAY_ON);
+        Serial.println("ACK:3 Fresh Oranges");
         break;
       case '4':
         turnOffAllRelays();
-        digitalWrite(RELAY4, LOW); // Relay 4 Aktif
-        // Serial.println("Aksi: Relay 4 ON - Rotten Fruits");
+        digitalWrite(RELAY4, RELAY_ON);
+        Serial.println("ACK:4 Rotten Fruits");
         break;
       case '0':
         turnOffAllRelays();
-        // Serial.println("Aksi: Semua Relay OFF - Tidak ada objek valid");
+        Serial.println("ACK:0 All relays OFF");
         break;
       default:
         // Jangan lakukan apa-apa jika command tidak dikenal
@@ -84,8 +88,8 @@ void loop() {
 
 // Fungsi bantuan untuk mematikan semua relay
 void turnOffAllRelays() {
-  digitalWrite(RELAY1, HIGH); // OFF
-  digitalWrite(RELAY2, HIGH); // OFF
-  digitalWrite(RELAY3, HIGH); // OFF
-  digitalWrite(RELAY4, HIGH); // OFF
+  digitalWrite(RELAY1, RELAY_OFF);
+  digitalWrite(RELAY2, RELAY_OFF);
+  digitalWrite(RELAY3, RELAY_OFF);
+  digitalWrite(RELAY4, RELAY_OFF);
 }
