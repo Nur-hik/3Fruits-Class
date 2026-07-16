@@ -47,7 +47,20 @@ def ensure_model_file(path: Path) -> None:
 def load_ai_model():
     ensure_model_file(MODEL_PATH)
     print(f"[INFO] Memuat model: {MODEL_PATH}")
-    model = tf.keras.models.load_model(MODEL_PATH)
+
+    # Fix for Keras 3 loading Teachable Machine or older H5 models
+    class TrueDivide(tf.keras.layers.Layer):
+        def call(self, inputs, y=1.0):
+            return inputs / y
+
+    class Subtract(tf.keras.layers.Layer):
+        def call(self, inputs, y=0.0):
+            return inputs - y
+            
+    tf.keras.utils.get_custom_objects()['TrueDivide'] = TrueDivide
+    tf.keras.utils.get_custom_objects()['Subtract'] = Subtract
+
+    model = tf.keras.models.load_model(MODEL_PATH, compile=False)
     with CLASS_NAMES_PATH.open(encoding="utf-8") as file:
         class_names = json.load(file)
     if model.output_shape[-1] != len(class_names):
